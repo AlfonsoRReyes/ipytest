@@ -8,3 +8,5 @@ __pycache__/
 *.egg-info/
 .ipynb_checkpoints/
 .idea/
+.gitignore~
+..gitignore.un~
