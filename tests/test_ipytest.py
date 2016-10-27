@@ -6,7 +6,8 @@ import ipytest
 
 class TestDiscovery(unittest.TestCase):
     def test_self(self):
-        actual = set(ipytest.collect_tests()) 
+        actual = set(ipytest.collect_tests())
+        print(actual)
         expected = {
             unittest.FunctionTestCase(test_get_assert_function_numpy),
             unittest.FunctionTestCase(test_get_assert_function_pandas_frame),
@@ -20,13 +21,15 @@ class TestDiscovery(unittest.TestCase):
         assert actual == expected
 
     def test_doctest(self):
-        actual = set(ipytest.collect_tests(doctest=True)) 
+        actual = set(ipytest.collect_tests(doctest=True))
+        print(actual)
         num_doctests = len({
             obj for obj in actual 
             if isinstance(obj, ipytest._DocTestCase)
         })
 
         self.assertEqual(num_doctests, 1)
+
 
 class TestAssertEquals(unittest.TestCase):
     """Canary test to make sure assert_equals actuals checks for equality.
@@ -123,7 +126,8 @@ def foo():
     """Example for a doctest.
 
     >>> foo()
-    None
+    0
     """
-    pass
+    #pass
+    return 0
 
